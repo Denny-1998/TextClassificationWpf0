@@ -1,0 +1,86 @@
+﻿<Window x:Class="TextClassificationWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextClassificationWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        
+        <Grid Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="StartLearning" Content="Start Training" Margin="20" Click="StartLearning_Click" Grid.ColumnSpan="2"/>
+            <TextBlock Text="Time:" Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" FontSize="20" VerticalAlignment="Center"></TextBlock>
+            <TextBox x:Name="TrainingTime" Margin="20,20,20,20" Height="30" Grid.Row="1" Grid.Column="1"></TextBox>
+        </Grid>
+        
+        
+        <Grid Grid.Row="2" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Choose a file to categorize:" Grid.Row="0" Margin="20,0,20,0" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="tbFilePath" Text="..\TestTexts\Test.txt" Margin="20,0,20,0" Height="30" Grid.Row="1"></TextBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnUploadText" Content="Upload Text" Margin="20" Grid.Column="1" Click="btnUploadText_Click"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="K=" Margin="10,20,0,20" VerticalAlignment="Center"></TextBlock>
+                    <TextBox x:Name="kValueTb" Text="5" Margin="0,20,0,20" VerticalAlignment="Center" Grid.Column="1"></TextBox>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+
+        <ListBox x:Name="ListOfItems" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid x:Name="listboxGrid" Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Title}" />
+                       
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    
+    </Grid>
+</Window>

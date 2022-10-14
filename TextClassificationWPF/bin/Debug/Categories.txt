@@ -1,0 +1,2 @@
+ClassA = Sports Articles 
+ClassB = Fairy Tales
